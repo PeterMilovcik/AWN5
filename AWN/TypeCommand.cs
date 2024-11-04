@@ -14,7 +14,7 @@ namespace AWN
 
         public bool CanExecute(string commandInput)
         {
-            return commandInput.StartsWith("type ");
+            return commandInput.StartsWith("type ", StringComparison.OrdinalIgnoreCase);
         }
 
         public async Task<string> ExecuteAsync(string commandInput)
