@@ -14,6 +14,10 @@
 - **Command**: `<prompt>`
 - **Purpose**: Generates a clear, concise response based on the provided prompt and the web page content. The command reads the inner text content from the page's body, prepares a prompt for `OpenAiService`, and returns the generated response.
 
+### ClickCommand
+- **Command**: `<command input containing "click">`
+- **Purpose**: Identifies the proper locator for the Playwright locator API using OpenAI's LLM capability and clicks on the identified HTML element. The command reads the HTML content from the page, uses the new method in `OpenAiService` to identify the locator, and clicks on the element using `LocatorClickOptions` with a timeout of 5 seconds. If the click call fails on `TimeoutException`, it returns "Failed to locate the correct web element to click."
+
 ### TextToSpeechService
 - **Purpose**: Converts the command output text into speech using OpenAI's text-to-speech capabilities with the Onyx voice. The audio is saved to `output.mp3` and played using the `NAudio` package. If the audio file already exists, it is deleted before saving the new audio. Error handling is included for failed text-to-speech calls, logging the error message to the console and writing "Text to speech failed." in the console. Audio playback can be canceled with a keyboard "Enter" key press.
 
