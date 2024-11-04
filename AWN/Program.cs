@@ -8,6 +8,7 @@ serviceCollection.AddServices();
 var serviceProvider = serviceCollection.BuildServiceProvider();
 
 var commandInvoker = serviceProvider.GetRequiredService<CommandInvoker>();
+var textToSpeechService = serviceProvider.GetRequiredService<TextToSpeechService>();
 
 while (true)
 {
@@ -15,4 +16,6 @@ while (true)
     var input = Console.ReadLine() ?? string.Empty;
     var result = await commandInvoker.ExecuteCommandAsync(input);
     Console.WriteLine(result);
+
+    await textToSpeechService.ConvertTextToSpeechAsync(result);
 }

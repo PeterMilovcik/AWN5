@@ -14,6 +14,9 @@
 - **Command**: `<prompt>`
 - **Purpose**: Generates a clear, concise response based on the provided prompt and the web page content. The command reads the inner text content from the page's body, prepares a prompt for `OpenAiService`, and returns the generated response.
 
+### TextToSpeechService
+- **Purpose**: Converts the command output text into speech using OpenAI's text-to-speech capabilities with the Onyx voice. The audio is saved to `output.mp3` and played using the `NAudio` package. If the audio file already exists, it is deleted before saving the new audio. Error handling is included for failed text-to-speech calls, logging the error message to the console and writing "Text to speech failed." in the console. Audio playback can be canceled with a keyboard "Enter" key press.
+
 ## Installation Instructions
 
 ### Install Playwright CLI
