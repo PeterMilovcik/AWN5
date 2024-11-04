@@ -36,5 +36,26 @@ namespace AWN
                 return $"Error generating response: {ex.Message}";
             }
         }
+
+        public async Task<string> IdentifyLocatorAsync(string htmlContent, string elementDescription)
+        {
+            var prompt = $"Given the HTML content: {htmlContent} and a target element described as {elementDescription}, identify the most precise and unique selector string that can be used with page.Locator in Playwright. Output only the locator string as plain text, ensuring it is not wrapped in any formatting or code blocks.";
+            var messages = new List<ChatMessage>
+            {
+                new SystemChatMessage("You are a knowledgeable assistant responding to prompts related to web page content."),
+                new UserChatMessage(prompt)
+            };
+
+            try
+            {
+                ChatCompletion completion = await _chatClient.CompleteChatAsync(messages);
+                return completion.Content[0].Text.Trim();
+            }
+            catch (Exception ex)
+            {
+                // Handle error (log it, rethrow it, etc.)
+                return $"Error identifying locator: {ex.Message}";
+            }
+        }
     }
 }
