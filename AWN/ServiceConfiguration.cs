@@ -10,6 +10,8 @@ namespace AWN
             services.AddSingleton<CommandInvoker>();
             services.AddSingleton<ICommand, ExitCommand>();
             services.AddSingleton<ICommand, NavigateCommand>(); // Register NavigateCommand
+            services.AddSingleton<OpenAiService>(); // Register OpenAiService
+            services.AddSingleton<ICommand, AiCommand>(); // Register AiCommand
 
             services.AddSingleton(serviceProvider =>
             {

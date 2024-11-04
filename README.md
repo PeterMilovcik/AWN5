@@ -10,6 +10,10 @@
 - **Command**: `navigate to <URL>`
 - **Purpose**: Navigates to the specified URL. If the URL does not start with "http://" or "https://", "https://" will be added as a prefix. Returns "Page loaded successfully." on success or "Failed to navigate to <URL>" on failure.
 
+### AiCommand
+- **Command**: `<prompt>`
+- **Purpose**: Generates a clear, concise response based on the provided prompt and the web page content. The command reads the inner text content from the page's body, prepares a prompt for `OpenAiService`, and returns the generated response.
+
 ## Installation Instructions
 
 ### Install Playwright CLI
