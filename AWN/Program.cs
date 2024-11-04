@@ -12,7 +12,7 @@ var commandInvoker = serviceProvider.GetRequiredService<CommandInvoker>();
 while (true)
 {
     Console.Write("Enter command: ");
-    var input = Console.ReadLine();
+    var input = Console.ReadLine() ?? string.Empty;
     var result = await commandInvoker.ExecuteCommandAsync(input);
     Console.WriteLine(result);
 }
