@@ -8,6 +8,7 @@ namespace AWN
         {
             services.AddSingleton<CommandInvoker>();
             services.AddSingleton<ICommand, ExitCommand>();
+            services.AddSingleton<ICommand, NavigateCommand>(); // Register NavigateCommand
         }
     }
 }
