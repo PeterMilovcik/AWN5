@@ -17,6 +17,9 @@
 ### TextToSpeechService
 - **Purpose**: Converts the command output text into speech using OpenAI's text-to-speech capabilities with the Onyx voice. The audio is saved to `output.mp3` and played using the `NAudio` package. If the audio file already exists, it is deleted before saving the new audio. Error handling is included for failed text-to-speech calls, logging the error message to the console and writing "Text to speech failed." in the console. Audio playback can be canceled with a keyboard "Enter" key press.
 
+### SpeechToTextService
+- **Purpose**: Adds speech-to-text capability using OpenAI's whisper-1 model and NAudio package. Captures audio input using NAudio package and saves it to `input.mp3`. Transcribes captured audio using OpenAI's whisper-1 model and returns the transcribed text.
+
 ## Installation Instructions
 
 ### Install Playwright CLI
