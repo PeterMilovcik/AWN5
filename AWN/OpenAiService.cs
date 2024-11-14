@@ -57,5 +57,26 @@ namespace AWN
                 return $"Error identifying locator: {ex.Message}";
             }
         }
+
+        public async Task<string> TranslateLanguageToIsoCodeAsync(string language)
+        {
+            var prompt = $"Translate the following language to its ISO 639-1 locale code: {language}. Output only the ISO 639-1 locale code as base language, and nothing else.";
+            var messages = new List<ChatMessage>
+            {
+                new SystemChatMessage("You are a knowledgeable assistant responding to prompts related to language translation."),
+                new UserChatMessage(prompt)
+            };
+
+            try
+            {
+                ChatCompletion completion = await _chatClient.CompleteChatAsync(messages);
+                return completion.Content[0].Text.Trim();
+            }
+            catch (Exception ex)
+            {
+                // Handle error (log it, rethrow it, etc.)
+                return $"Error translating language: {ex.Message}";
+            }
+        }
     }
 }

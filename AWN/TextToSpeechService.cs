@@ -21,7 +21,13 @@ namespace AWN
         {
             try
             {
-                BinaryData speech = await _audioClient.GenerateSpeechAsync(text, GeneratedSpeechVoice.Onyx);
+                var language = Environment.GetEnvironmentVariable("DEFAULT_LANGUAGE") ?? "en";
+                var options = new AudioTranscriptionOptions
+                {
+                    Language = language
+                };
+
+                BinaryData speech = await _audioClient.GenerateSpeechAsync(text, GeneratedSpeechVoice.Onyx, options);
 
                 string outputFilePath = "output.mp3";
                 if (File.Exists(outputFilePath))
